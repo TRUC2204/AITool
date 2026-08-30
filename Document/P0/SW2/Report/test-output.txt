@@ -1,0 +1,59 @@
+﻿py : test_import_export 
+(test_acceptance.KnowledgeGraphTestCase.test_import_export) ... ok
+At line:1 char:74
++ ... port" | Out-Null; py -3 -m unittest discover -s tests -v 2>&1 | Out-F ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_import_exp..._export) ... ok 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_node_crud (test_acceptance.KnowledgeGraphTestCase.test_node_crud) ... ok
+test_node_title_index 
+(test_acceptance.KnowledgeGraphTestCase.test_node_title_index) ... ok
+test_node_unique_id 
+(test_acceptance.KnowledgeGraphTestCase.test_node_unique_id) ... ok
+test_persistence_survives_restart 
+(test_acceptance.KnowledgeGraphTestCase.test_persistence_survives_restart) ... 
+ok
+test_rebuild_indexes 
+(test_acceptance.KnowledgeGraphTestCase.test_rebuild_indexes) ... ok
+test_relationship_crud_and_multi_metadata (test_acceptance.KnowledgeGraphTestCa
+se.test_relationship_crud_and_multi_metadata) ... ok
+test_relationship_index 
+(test_acceptance.KnowledgeGraphTestCase.test_relationship_index) ... ok
+test_relationship_reference_validation (test_acceptance.KnowledgeGraphTestCase.
+test_relationship_reference_validation) ... ok
+test_traversal_inbound_outbound 
+(test_acceptance.KnowledgeGraphTestCase.test_traversal_inbound_outbound) ... ok
+test_version_increment 
+(test_acceptance.KnowledgeGraphTestCase.test_version_increment) ... ok
+test_auto_node_id_generation 
+(test_extended.ExtendedTestCase.test_auto_node_id_generation) ... ok
+test_auto_relationship_id_generation 
+(test_extended.ExtendedTestCase.test_auto_relationship_id_generation) ... ok
+test_bidirectional_traversal 
+(test_extended.ExtendedTestCase.test_bidirectional_traversal) ... ok
+test_delete_node_removes_relationships 
+(test_extended.ExtendedTestCase.test_delete_node_removes_relationships) ... ok
+test_empty_project (test_extended.ExtendedTestCase.test_empty_project) ... ok
+test_import_export_preserve_ids 
+(test_extended.ExtendedTestCase.test_import_export_preserve_ids) ... ok
+test_multiple_relationships 
+(test_extended.ExtendedTestCase.test_multiple_relationships) ... ok
+test_project_isolation (test_extended.ExtendedTestCase.test_project_isolation) 
+... ok
+test_rebuild_index_after_index_deletion 
+(test_extended.ExtendedTestCase.test_rebuild_index_after_index_deletion) ... ok
+test_relationship_version_increment 
+(test_extended.ExtendedTestCase.test_relationship_version_increment) ... ok
+test_restart_then_rebuild_index 
+(test_extended.ExtendedTestCase.test_restart_then_rebuild_index) ... ok
+test_unicode_node_content 
+(test_extended.ExtendedTestCase.test_unicode_node_content) ... ok
+test_unicode_relationship_metadata 
+(test_extended.ExtendedTestCase.test_unicode_relationship_metadata) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 2.967s
+
+OK

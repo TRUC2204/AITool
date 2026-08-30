@@ -1,0 +1,114 @@
+﻿py : test_import_export 
+(test_acceptance.KnowledgeGraphTestCase.test_import_export) ... ok
+At line:1 char:1
++ py -3 -m unittest discover -s tests -v 2>&1 | Out-File -FilePath "..\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_import_exp..._export) ... ok 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_node_crud (test_acceptance.KnowledgeGraphTestCase.test_node_crud) ... ok
+test_node_title_index 
+(test_acceptance.KnowledgeGraphTestCase.test_node_title_index) ... ok
+test_node_unique_id 
+(test_acceptance.KnowledgeGraphTestCase.test_node_unique_id) ... ok
+test_persistence_survives_restart 
+(test_acceptance.KnowledgeGraphTestCase.test_persistence_survives_restart) ... 
+ok
+test_rebuild_indexes 
+(test_acceptance.KnowledgeGraphTestCase.test_rebuild_indexes) ... ok
+test_relationship_crud_and_multi_metadata (test_acceptance.KnowledgeGraphTestCa
+se.test_relationship_crud_and_multi_metadata) ... ok
+test_relationship_index 
+(test_acceptance.KnowledgeGraphTestCase.test_relationship_index) ... ok
+test_relationship_reference_validation (test_acceptance.KnowledgeGraphTestCase.
+test_relationship_reference_validation) ... ok
+test_traversal_inbound_outbound 
+(test_acceptance.KnowledgeGraphTestCase.test_traversal_inbound_outbound) ... ok
+test_version_increment 
+(test_acceptance.KnowledgeGraphTestCase.test_version_increment) ... ok
+test_iteration_limit (test_ai_offline.AgentLoopTests.test_iteration_limit) ... 
+ok
+test_multi_loop_then_answer 
+(test_ai_offline.AgentLoopTests.test_multi_loop_then_answer) ... ok
+test_single_loop_final_answer 
+(test_ai_offline.AgentLoopTests.test_single_loop_final_answer) ... ok
+test_create_success 
+(test_ai_offline.DataModificationTests.test_create_success) ... ok
+test_delete_success 
+(test_ai_offline.DataModificationTests.test_delete_success) ... ok
+test_node_not_found 
+(test_ai_offline.DataModificationTests.test_node_not_found) ... ok
+test_update_success 
+(test_ai_offline.DataModificationTests.test_update_success) ... ok
+test_context_exceeds_limit 
+(test_ai_offline.TokenControlTests.test_context_exceeds_limit) ... ok
+test_estimate_tokens (test_ai_offline.TokenControlTests.test_estimate_tokens) 
+... ok
+test_output_exceeds_limit 
+(test_ai_offline.TokenControlTests.test_output_exceeds_limit) ... ok
+test_truncate_segments_keeps_recent 
+(test_ai_offline.TokenControlTests.test_truncate_segments_keeps_recent) ... ok
+test_usage_tracking_accurate 
+(test_ai_offline.TokenControlTests.test_usage_tracking_accurate) ... ok
+test_parameter_invalid 
+(test_ai_offline.ToolCallingTests.test_parameter_invalid) ... ok
+test_tool_called_correctly 
+(test_ai_offline.ToolCallingTests.test_tool_called_correctly) ... ok
+test_tool_exception (test_ai_offline.ToolCallingTests.test_tool_exception) ... 
+ok
+test_tool_name_not_found 
+(test_ai_offline.ToolCallingTests.test_tool_name_not_found) ... ok
+test_auto_node_id_generation 
+(test_extended.ExtendedTestCase.test_auto_node_id_generation) ... ok
+test_auto_relationship_id_generation 
+(test_extended.ExtendedTestCase.test_auto_relationship_id_generation) ... ok
+test_bidirectional_traversal 
+(test_extended.ExtendedTestCase.test_bidirectional_traversal) ... ok
+test_delete_node_removes_relationships 
+(test_extended.ExtendedTestCase.test_delete_node_removes_relationships) ... ok
+test_empty_project (test_extended.ExtendedTestCase.test_empty_project) ... ok
+test_import_export_preserve_ids 
+(test_extended.ExtendedTestCase.test_import_export_preserve_ids) ... ok
+test_multiple_relationships 
+(test_extended.ExtendedTestCase.test_multiple_relationships) ... ok
+test_project_isolation (test_extended.ExtendedTestCase.test_project_isolation) 
+... ok
+test_rebuild_index_after_index_deletion 
+(test_extended.ExtendedTestCase.test_rebuild_index_after_index_deletion) ... ok
+test_relationship_version_increment 
+(test_extended.ExtendedTestCase.test_relationship_version_increment) ... ok
+test_restart_then_rebuild_index 
+(test_extended.ExtendedTestCase.test_restart_then_rebuild_index) ... ok
+test_unicode_node_content 
+(test_extended.ExtendedTestCase.test_unicode_node_content) ... ok
+test_unicode_relationship_metadata 
+(test_extended.ExtendedTestCase.test_unicode_relationship_metadata) ... ok
+test_agent_tool_loop_end_to_end 
+(test_gemini_live.GeminiLiveTests.test_agent_tool_loop_end_to_end) ... skipped 
+'No network egress to generativelanguage.googleapis.com:443 (firewall)'
+test_invalid_api_key (test_gemini_live.GeminiLiveTests.test_invalid_api_key) 
+... skipped 'No network egress to generativelanguage.googleapis.com:443 
+(firewall)'
+test_valid_api_key_response 
+(test_gemini_live.GeminiLiveTests.test_valid_api_key_response) ... skipped 'No 
+network egress to generativelanguage.googleapis.com:443 (firewall)'
+test_detect_circular_relationship 
+(test_retrieval.RetrievalTestCase.test_detect_circular_relationship) ... ok
+test_load_related_node 
+(test_retrieval.RetrievalTestCase.test_load_related_node) ... ok
+test_search_by_metadata 
+(test_retrieval.RetrievalTestCase.test_search_by_metadata) ... ok
+test_search_no_result (test_retrieval.RetrievalTestCase.test_search_no_result) 
+... ok
+test_search_success (test_retrieval.RetrievalTestCase.test_search_success) ... 
+ok
+test_stop_when_exceed_depth 
+(test_retrieval.RetrievalTestCase.test_stop_when_exceed_depth) ... ok
+test_stop_when_exceed_node_limit 
+(test_retrieval.RetrievalTestCase.test_stop_when_exceed_node_limit) ... ok
+
+----------------------------------------------------------------------
+Ran 50 tests in 4.034s
+
+OK (skipped=3)

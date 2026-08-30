@@ -1,0 +1,13 @@
+# Secrets / local config
+.env
+.env.*
+!.env.example
+appsettings.local.json
+*.local.json
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Demo data is intentionally kept for review (Source/DemoProject)
