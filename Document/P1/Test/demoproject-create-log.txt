@@ -1,0 +1,70 @@
+======================================================================
+Persisted create demo — writing into the REAL DemoProject
+Mode: LIVE (gemini-flash-lite-latest)
+======================================================================
+
+BEFORE:
+  nodes (5): N001:Luffy, N002:Zoro, N003:Nami, N004:Sanji, N005:Shanks
+  relationships (5): R001:N001->N002, R002:N001->N003, R003:N001->N004, R004:N005->N001, R005:N002->N004
+
+----------------------------------------------------------------------
+STEP 1 — Discuss a new character related to Luffy
+  user> Gợi ý một nhân vật mới liên quan tới Luffy.
+  ai>   Dựa trên dữ liệu trong Knowledge Graph (các node **Luffy**, **Shanks**, **Zoro**, **Nami**, **Sanji**), tôi gợi ý thêm một nhân vật mới phù hợp với thế giới hiện có:
+
+**Gợi ý nhân vật mới:**
+* **Tên:** *Kaelen (hoặc một tên mang âm hưởng hải tặc)* – một thợ rèn trẻ tuổi hoặc người tập sự từng có duyên gặp gỡ Shanks (Tứ Hoàng và là ân nhân/người truyền cảm hứng của Luffy) trong quá khứ, hiện đang trên hành trình tìm kiếm nguyên liệu quý hiếm để chế tạo một thanh bảo kiếm hoặc một món vũ khí đặc biệt cho Luffy/băng Mũ Rơm.
+
+**Mối liên hệ với Luffy:**
+* Nhân vật này từng được Shanks cứu hoặc giúp đỡ trong một biến cố, từ đó luôn coi Shanks là hình mẫu và đặc biệt chú ý đến Luffy – người đang giữ chiếc mũ rơm biểu tượng của Shanks. 
+* Có thể thiết lập mối quan hệ đồng minh hoặc người hỗ trợ hậu phương cho băng Mũ Rơm (tương tự như mối liên hệ giữa các thành viên hiện tại như Zoro, Nami, Sanji).
+
+Nếu bạn đồng ý với gợi ý này, tôi có thể tiến hành đề xuất tạo node mới và liên kết với Luffy trong hệ thống. Bạn có muốn tôi thực hiện bước đề xuất đó không?
+
+*Các node dựa vào:* **Luffy** (N001), **Shanks** (N005).
+
+Sources:
+  - Node N002 (Zoro)
+  - Relationship R001 (đồng đội, thuyền trưởng - thuyền viên)
+  - Node N003 (Nami)
+  - Relationship R002 (đồng đội)
+  - Node N004 (Sanji)
+  - Relationship R003 (đồng đội)
+  - Node N005 (Shanks)
+  - Relationship R004 (người truyền cảm hứng, ân nhân)
+
+----------------------------------------------------------------------
+STEP 2 — Agree; the AI proposes creating the character
+  user> Hãy tạo nhân vật Robin.
+  ai>   Tôi đã lên kế hoạch và đề xuất tạo nhân vật **Robin** (Nhà khảo cổ học của băng Mũ Rơm) và liên kết cô ấy với **Luffy** (N001) trong Knowledge Graph. 
+
+Vui lòng xem xét và phê duyệt các thay đổi được đề xuất để hoàn tất việc thêm nhân vật này vào thế giới.
+
+*Các node dựa vào:* **Luffy** (N001).
+[CHANGE PANEL]
+Proposal create-demo-P1 — AI-proposed changes
+Reason: Thêm nhân vật Nico Robin theo yêu cầu của người dùng vào băng Mũ Rơm.; Robin là nhà khảo cổ học và là đồng đội trong băng Mũ Rơm của Luffy.
+  Added:
+    [create-demo-P1-C1] + Create node 'Robin'  (pending)
+    [create-demo-P1-C2] + Link @robin -> N001 :: đồng đội  (pending)
+  COMMITTED new character: 2 change(s) -> H0001 (written to disk)
+
+----------------------------------------------------------------------
+AFTER:
+  nodes (6): N001:Luffy, N002:Zoro, N003:Nami, N004:Sanji, N005:Shanks, N006:Robin
+  relationships (6): R001:N001->N002, R002:N001->N003, R003:N001->N004, R004:N005->N001, R005:N002->N004, R006:N006->N001
+
+----------------------------------------------------------------------
+PERSISTENCE PROOF — reopening DemoProject from disk (fresh process state)
+  reloaded node N006: Robin
+  reloaded relationships on N006: ['R006:đồng đội']
+
+  new node file on disk: E:\Tool\4. AI tool\AI writing tool\AI writing tool\Source\DemoProject\nodes\N006.json
+  {'id': 'N006', 'title': 'Robin', 'content': 'Nhà khảo cổ học của băng Mũ Rơm, người tìm kiếm chân lý lịch sử và các Poneglyph.', 'version': 1, 'created_at': '2026-08-30T09:48:36.973949+00:00', 'updated_at': '2026-08-30T09:48:36.973949+00:00'}
+  new relationship file on disk: E:\Tool\4. AI tool\AI writing tool\AI writing tool\Source\DemoProject\relationships\R006.json
+  {'id': 'R006', 'source_node_id': 'N006', 'target_node_id': 'N001', 'metadata': ['đồng đội'], 'version': 1, 'created_at': '2026-08-30T09:48:36.979352+00:00', 'updated_at': '2026-08-30T09:48:36.979352+00:00'}
+
+======================================================================
+RESULT: nodes 5 -> 6 (+1 OK), relationships 5 -> 6 (+1 OK)
+The AI created a new node and relationship, persisted to the real DemoProject.
+======================================================================

@@ -94,7 +94,9 @@ class AgentRuntime:
 
             # Execute every requested tool call this turn.
             for call in response.function_calls:
-                contents.append(model_function_call(call.name, call.args))
+                contents.append(
+                    model_function_call(call.name, call.args, call.thought_signature)
+                )
                 log = self._execute(call, iteration)
                 tool_calls.append(log)
                 contents.append(

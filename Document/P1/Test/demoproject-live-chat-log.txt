@@ -1,0 +1,242 @@
+Phase 1 — DemoProject Use-Case Test
+Generated: 2026-08-30T09:30:28.475061+00:00
+Mode: LIVE (real Gemini: gemini-flash-lite-latest)
+DemoProject: E:\Tool\4. AI tool\AI writing tool\AI writing tool\Source\DemoProject
+Working copy: C:\Users\VVTRUC\AppData\Local\Temp\demo_test_6chd54kx
+
+======================================================================
+UC1 — Find information about an existing character (grounded)
+======================================================================
+  user> Luffy là ai? Cậu ấy có những đồng đội nào?
+  ai>   Dựa trên dữ liệu từ các node **Luffy** (N001), **Zoro** (N002), **Nami** (N003) và **Sanji** (N004):
+
+* **Luffy** là thuyền trưởng băng Mũ Rơm và là tương lai Vua Hải Tặc.
+* Các đồng đội trong băng Mũ Rơm hiện được ghi nhận bao gồm: **Zoro**, **Nami** và **Sanji**.
+
+Sources:
+  - Node N002 (Zoro)
+  - Relationship R001 (đồng đội, thuyền trưởng - thuyền viên)
+  - Node N003 (Nami)
+  - Relationship R002 (đồng đội)
+  - Node N004 (Sanji)
+  - Relationship R003 (đồng đội)
+  - Node N005 (Shanks)
+  - Relationship R004 (người truyền cảm hứng, ân nhân)
+  [PASS] answer is grounded in internal data
+  [PASS] sources are cited — ['N002', 'R001', 'N003', 'R002', 'N004', 'R003', 'N005', 'R004']
+  [PASS] read at least one node/relationship tool
+
+======================================================================
+UC2 — Ask about something not in the project (internal-first)
+======================================================================
+  user> Kể tiểu sử Naruto Uzumaki trong dự án này.
+  ai>   Không tìm thấy thông tin nào về nhân vật Naruto Uzumaki trong cơ sở dữ liệu của dự án.
+  [PASS] did not fabricate (no internal evidence) — live model answer logged above
+
+======================================================================
+UC3 — Brainstorm an idea for a NEW character (discussion, no write)
+======================================================================
+  ai>   Dựa trên dữ liệu từ các node **Luffy** (N001), **Zoro** (N002), **Nami** (N003), và **Sanji** (N004):
+
+Băng Mũ Rơm hiện tại có thuyền trưởng Luffy và các thành viên đảm nhận các vai trò cơ bản (chiến đấu, hoa tiêu, đầu bếp). Để phù hợp với thế giới hiện có trong cơ sở dữ liệu của dự án, một ý tưởng thành viên mới có thể là:
+* **Một thợ đóng tàu (Shipwright)** hoặc **thợ cơ khí**: Để duy trì và nâng cấp thuyền cho băng Mũ Rơm trong các hành trình hải tặc.
+* **Một bác sĩ (Doctor)**: Đảm bảo sức khỏe cho thuyền trưởng Luffy (với những trận chiến khốc liệt) và các thành viên còn lại (Zoro, Nami, Sanji).
+
+*(Lưu ý: Đây chỉ là ý tưởng thảo luận dựa trên các mối quan hệ hiện có, chưa được thêm vào hệ thống.)*
+
+Sources:
+- Node N001 (Luffy)
+- Node N002 (Zoro)
+- Node N003 (Nami)
+- Node N004 (Sanji)
+
+Sources:
+  - Node N002 (Zoro)
+  - Relationship R001 (đồng đội, thuyền trưởng - thuyền viên)
+  - Node N003 (Nami)
+  - Relationship R002 (đồng đội)
+  - Node N004 (Sanji)
+  - Relationship R003 (đồng đội)
+  - Node N005 (Shanks)
+  - Relationship R004 (người truyền cảm hứng, ân nhân)
+  [PASS] brainstorm produced no write proposal yet
+
+======================================================================
+UC4 — Discuss / refine the idea further (multi-turn)
+======================================================================
+  ai>   Dựa trên dữ liệu từ node **Shanks** (N005), tôi đã phác thảo và đề xuất thêm nhân vật **Nhà khảo cổ học** mới có mối liên hệ trong quá khứ với Shanks để bạn xem xét và phê duyệt:
+
+* **Nhà khảo cổ học (Băng Mũ Rơm)**: Một nhân vật mới đảm nhận vai trò khảo cổ, mang theo bí ẩn hoặc mối liên hệ trong quá khứ với Tứ Hoàng **Shanks**.
+
+Sources:
+- Node N005 (Shanks)
+  [PASS] conversation state grew (multi-turn memory)
+  [PASS] no data written without approval (draft-before-commit)
+
+======================================================================
+UC5 — Agree to CREATE the new character (draft -> approve -> commit)
+======================================================================
+  ai>   Tôi đã soạn thảo các đề xuất thay đổi dựa trên yêu cầu của bạn và dữ liệu từ node **Luffy** (N001) và **Shanks** (N005):
+
+1. **Tạo node mới**: **Robin** (Nhà khảo cổ học của băng Mũ Rơm, có mối liên hệ trong quá khứ với Shanks).
+2. **Liên kết**: 
+   - Robin kết nối với **Luffy** (N001) với vai trò thành viên/đồng đội.
+   - Robin kết nối với **Shanks** (N005) qua mối liên hệ trong quá khứ.
+
+Vui lòng xem xét và phê duyệt các thay đổi trên để lưu vào hệ thống!
+
+Sources:
+- Node N001 (Luffy)
+- Node N005 (Shanks)
+[CHANGE PANEL]
+Proposal demo-test-P2 — AI-proposed changes
+Reason: Tạo nhân vật mới Robin theo yêu cầu của người dùng, đảm nhận vai trò nhà khảo cổ học và là thành viên băng Mũ Rơm có liên hệ với Shanks.; Robin gia nhập băng Mũ Rơm, có Luffy là thuyền trưởng.; Robin có mối liên hệ trong quá khứ với Shanks theo yêu cầu người dùng.
+  Added:
+    [demo-test-P2-C1] + Create node 'Robin'  (pending)
+    [demo-test-P2-C2] + Link @robin -> N001 :: thành viên, đồng đội  (pending)
+    [demo-test-P2-C3] + Link @robin -> N005 :: mối liên hệ quá khứ  (pending)
+  [PASS] proposal has no blocking consistency errors — []
+  [PASS] draft-before-commit: change approved then committed
+  [PASS] a new character node was created after commit
+
+======================================================================
+UC6 — Create a LINK between the new character and Luffy
+======================================================================
+  ai>   Tôi đã đề xuất các thay đổi sau vào hệ thống để bạn xem xét và phê duyệt:
+
+1. **Tạo node mới**: **Robin** (N006 hoặc ID tương ứng) - Nhà khảo cổ học của băng Mũ Rơm, có mối liên hệ trong quá khứ với Shanks.
+2. **Tạo liên kết**: Liên kết **Robin** với **Luffy** (N001) với tư cách là đồng đội.
+
+Vui lòng kiểm tra và phê duyệt các đề xuất trên!
+
+Sources:
+- Node N001 (Luffy)
+[CHANGE PANEL]
+Proposal demo-test-P3 — AI-proposed changes
+Reason: Tạo nhân vật mới Robin theo yêu cầu người dùng.; Liên kết Robin với Luffy là đồng đội trong băng Mũ Rơm.
+  Added:
+    [demo-test-P3-C1] + Create node 'Robin'  (pending)
+    [demo-test-P3-C2] + Link @robin -> N001 :: đồng đội, thuyền trưởng - thuyền viên  (pending)
+  [PASS] relationship committed
+  [PASS] relationship count increased
+
+======================================================================
+UC7 — Update an existing character's description
+======================================================================
+  [provider error] RateLimitError: Rate limited: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan an
+  ai>   [provider unavailable: RateLimitError]
+  [PASS] Zoro description changed after commit
+
+======================================================================
+UC8 — Consistency / conflict detection (duplicate character)
+======================================================================
+  [provider error] AIProviderError: HTTP 400: {
+  "error": {
+    "code": 400,
+    "message": "Function call is missing a thought_signature in functionCall p
+  ai>   [provider unavailable: AIProviderError]
+  (staging a duplicate 'Luffy' directly to test consistency detection)
+  consistency issues: ["[WARNING] A node titled 'Luffy' already exists (N001)"]
+  [PASS] duplicate title detected before commit
+  [PASS] duplicate not committed (rejected/discarded)
+
+======================================================================
+UC9 — Undo the last change (restore previous state)
+======================================================================
+  undo result: ok=True reversed=1
+  [PASS] undo reported success
+  [PASS] Zoro description restored by undo
+
+======================================================================
+UC10 — Internet Mode toggle (external knowledge, opt-in)
+======================================================================
+  [PASS] internet mode is OFF by default (internal-only)
+  [provider error] RateLimitError: Rate limited: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan an
+  ai>   [provider unavailable: RateLimitError]
+  [PASS] internet mode enabled on request
+  [PASS] internet mode toggled back off
+
+======================================================================
+UC11 — Memory promotion (save a confirmed fact to the project)
+======================================================================
+  [PASS] promotion produced a proposal
+[CHANGE PANEL]
+Proposal demo-test-P6 — Promote working-memory facts to long-term memory
+Reason: Confirmed during this session
+  Added:
+    [demo-test-P6-C1] + Create node 'Băng Mũ Rơm từng có con tàu Going Merry trước tàu Sunny.'  (pending)
+  [PASS] promoted fact written after approval
+
+======================================================================
+UC12 — Observability: debug view, cost, diagnostics export
+======================================================================
+[DECISION FLOW]
+  ai_request: generate request sent
+  ai_response: generate response received
+  retrieval: 'Luffy' (by keyword)
+  ai_request: generate request sent
+  ai_response: generate response received
+  retrieval: related to N001
+  ai_request: generate request sent
+  ai_response: generate response received
+  tool_call: SearchNode
+  tool_call: GetRelatedNodes
+  ai_request: generate request sent
+  ai_response: generate response received
+  retrieval: 'Naruto' (by keyword)
+  ai_request: generate request sent
+  ai_response: generate response received
+  tool_call: SearchNode
+  ai_request: gener...
+  [PASS] debug view has decision flow + token usage
+  [PASS] token/cost tracked — {'calls': 26, 'input_tokens': 39840, 'output_tokens': 1722, 'total_tokens': 41562, 'total_cost': 0.0}
+  [PASS] diagnostic package exported
+  diagnostics at: C:\Users\VVTRUC\AppData\Local\Temp\demo_test_6chd54kx\diagnostics
+  history: ['H0001 AI-proposed changes', 'H0002 AI-proposed changes', 'H0003 AI-proposed changes', 'H0004 Promote working-memory facts to long-term memory']
+
+======================================================================
+UC13 — Original DemoProject data integrity (must be untouched)
+======================================================================
+  [PASS] original still has 5 nodes — titles=['Luffy', 'Zoro', 'Nami', 'Sanji', 'Shanks']
+  [PASS] original still has 5 relationships
+  [PASS] original data byte-for-byte unchanged
+
+======================================================================
+SUMMARY
+======================================================================
+  PASS  answer is grounded in internal data
+  PASS  sources are cited
+  PASS  read at least one node/relationship tool
+  PASS  did not fabricate (no internal evidence)
+  PASS  brainstorm produced no write proposal yet
+  PASS  conversation state grew (multi-turn memory)
+  PASS  no data written without approval (draft-before-commit)
+  PASS  proposal has no blocking consistency errors
+  PASS  draft-before-commit: change approved then committed
+  PASS  a new character node was created after commit
+  PASS  relationship committed
+  PASS  relationship count increased
+  PASS  Zoro description changed after commit
+  PASS  duplicate title detected before commit
+  PASS  duplicate not committed (rejected/discarded)
+  PASS  undo reported success
+  PASS  Zoro description restored by undo
+  PASS  internet mode is OFF by default (internal-only)
+  PASS  internet mode enabled on request
+  PASS  internet mode toggled back off
+  PASS  promotion produced a proposal
+  PASS  promoted fact written after approval
+  PASS  debug view has decision flow + token usage
+  PASS  token/cost tracked
+  PASS  diagnostic package exported
+  PASS  original still has 5 nodes
+  PASS  original still has 5 relationships
+  PASS  original data byte-for-byte unchanged
+
+  TOTAL: 28 passed, 0 failed, 0 skipped

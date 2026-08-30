@@ -38,6 +38,9 @@ class ProviderTimeoutError(AIProviderError):
 class FunctionCall:
     name: str
     args: dict[str, Any]
+    # Gemini "thinking" models return an opaque signature that must be echoed
+    # back with the functionCall on the next turn, or the API rejects it (400).
+    thought_signature: Optional[str] = None
 
 
 @dataclass
@@ -58,8 +61,13 @@ def user_text(text: str) -> dict[str, Any]:
     return {"role": "user", "parts": [{"text": text}]}
 
 
-def model_function_call(name: str, args: dict[str, Any]) -> dict[str, Any]:
-    return {"role": "model", "parts": [{"functionCall": {"name": name, "args": args}}]}
+def model_function_call(
+    name: str, args: dict[str, Any], thought_signature: Optional[str] = None
+) -> dict[str, Any]:
+    part: dict[str, Any] = {"functionCall": {"name": name, "args": args}}
+    if thought_signature:
+        part["thoughtSignature"] = thought_signature
+    return {"role": "model", "parts": [part]}
 
 
 def function_response(name: str, response: dict[str, Any]) -> dict[str, Any]:
@@ -159,7 +167,11 @@ class GeminiProvider(IAIProvider):
             if "functionCall" in part:
                 call = part["functionCall"]
                 response.function_calls.append(
-                    FunctionCall(name=call.get("name", ""), args=call.get("args", {}) or {})
+                    FunctionCall(
+                        name=call.get("name", ""),
+                        args=call.get("args", {}) or {},
+                        thought_signature=part.get("thoughtSignature"),
+                    )
                 )
             elif "text" in part:
                 text_parts.append(part["text"])

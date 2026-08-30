@@ -1,0 +1,190 @@
+Phase 1 — DemoProject Use-Case Test
+Generated: 2026-08-30T09:30:21.640139+00:00
+Mode: SCRIPTED (deterministic)
+DemoProject: E:\Tool\4. AI tool\AI writing tool\AI writing tool\Source\DemoProject
+Working copy: C:\Users\VVTRUC\AppData\Local\Temp\demo_test_lecd7clt
+
+======================================================================
+UC1 — Find information about an existing character (grounded)
+======================================================================
+  user> Luffy là ai? Cậu ấy có những đồng đội nào?
+  ai>   Luffy là thuyền trưởng băng Mũ Rơm; đồng đội gồm Zoro, Nami, Sanji.
+
+Sources:
+  - Node N001 (Luffy)
+  - Node N002 (Zoro)
+  - Relationship R001 (đồng đội, thuyền trưởng - thuyền viên)
+  - Node N003 (Nami)
+  - Relationship R002 (đồng đội)
+  - Node N004 (Sanji)
+  - Relationship R003 (đồng đội)
+  - Node N005 (Shanks)
+  - Relationship R004 (người truyền cảm hứng, ân nhân)
+  [PASS] answer is grounded in internal data
+  [PASS] sources are cited — ['N001', 'N002', 'R001', 'N003', 'R002', 'N004', 'R003', 'N005', 'R004']
+  [PASS] read at least one node/relationship tool
+
+======================================================================
+UC2 — Ask about something not in the project (internal-first)
+======================================================================
+  user> Kể tiểu sử Naruto Uzumaki trong dự án này.
+  ai>   No internal information was found in this project for your request. I won't guess. Enable Internet Mode if you want me to use outside knowledge, or add the information to the project first.
+  [PASS] flagged as no-evidence-found
+  [PASS] returned the No-Evidence message
+
+======================================================================
+UC3 — Brainstorm an idea for a NEW character (discussion, no write)
+======================================================================
+  ai>   Gợi ý: một nhà khảo cổ học đi tìm lịch sử thế giới, hợp với hành trình của băng. (Đây là ý tưởng để thảo luận, mình chưa tạo gì cả.)
+
+Sources:
+  - Node N002 (Zoro)
+  - Relationship R001 (đồng đội, thuyền trưởng - thuyền viên)
+  - Node N003 (Nami)
+  - Relationship R002 (đồng đội)
+  - Node N004 (Sanji)
+  - Relationship R003 (đồng đội)
+  - Node N005 (Shanks)
+  - Relationship R004 (người truyền cảm hứng, ân nhân)
+  [PASS] brainstorm produced no write proposal yet
+
+======================================================================
+UC4 — Discuss / refine the idea further (multi-turn)
+======================================================================
+  ai>   Được, có thể để cô ấy từng gặp Shanks khi còn nhỏ và được ông giúp đỡ.
+  [PASS] conversation state grew (multi-turn memory)
+  [PASS] no data written without approval (draft-before-commit)
+
+======================================================================
+UC5 — Agree to CREATE the new character (draft -> approve -> commit)
+======================================================================
+  ai>   Mình đã đề xuất tạo Robin. Bạn xem và duyệt nhé.
+[CHANGE PANEL]
+Proposal demo-test-P1 — AI-proposed changes
+Reason: Thành viên mới theo thảo luận
+  Added:
+    [demo-test-P1-C1] + Create node 'Robin'  (pending)
+  [PASS] proposal has no blocking consistency errors — []
+  [PASS] draft-before-commit: change approved then committed
+  [PASS] a new character node was created after commit
+
+======================================================================
+UC6 — Create a LINK between the new character and Luffy
+======================================================================
+  ai>   Đã đề xuất liên kết Robin với Luffy.
+[CHANGE PANEL]
+Proposal demo-test-P2 — AI-proposed changes
+Reason: Robin là thành viên băng
+  Added:
+    [demo-test-P2-C1] + Link N006 -> N001 :: đồng đội  (pending)
+  [PASS] relationship committed
+  [PASS] relationship count increased
+
+======================================================================
+UC7 — Update an existing character's description
+======================================================================
+  ai>   Đã đề xuất cập nhật mô tả của Zoro.
+  [PASS] Zoro description changed after commit
+
+======================================================================
+UC8 — Consistency / conflict detection (duplicate character)
+======================================================================
+  ai>   Mình đã đề xuất, nhưng lưu ý tên này có thể trùng.
+  consistency issues: ["[WARNING] A node titled 'Luffy' already exists (N001)"]
+  [PASS] duplicate title detected before commit
+  [PASS] duplicate not committed (rejected/discarded)
+
+======================================================================
+UC9 — Undo the last change (restore previous state)
+======================================================================
+  undo result: ok=True reversed=1
+  [PASS] undo reported success
+  [PASS] Zoro description restored by undo
+
+======================================================================
+UC10 — Internet Mode toggle (external knowledge, opt-in)
+======================================================================
+  [PASS] internet mode is OFF by default (internal-only)
+  ai>   [EXTERNAL] Theo thần thoại Hy Lạp, Poseidon là thần biển.
+  [PASS] internet mode enabled on request
+  [PASS] internet mode toggled back off
+
+======================================================================
+UC11 — Memory promotion (save a confirmed fact to the project)
+======================================================================
+  [PASS] promotion produced a proposal
+[CHANGE PANEL]
+Proposal demo-test-P5 — Promote working-memory facts to long-term memory
+Reason: Confirmed during this session
+  Added:
+    [demo-test-P5-C1] + Create node 'Băng Mũ Rơm từng có con tàu Going Merry trước tàu Sunny.'  (pending)
+  [PASS] promoted fact written after approval
+
+======================================================================
+UC12 — Observability: debug view, cost, diagnostics export
+======================================================================
+[DECISION FLOW]
+  ai_request: generate request sent
+  ai_response: generate response received
+  retrieval: node N001 (Luffy)
+  retrieval: related to N001
+  ai_request: generate request sent
+  ai_response: generate response received
+  tool_call: GetNode
+  tool_call: GetRelatedNodes
+  ai_request: generate request sent
+  ai_response: generate response received
+  retrieval: 'Naruto' (by keyword)
+  ai_request: generate request sent
+  ai_response: generate response received
+  tool_call: SearchNode
+  ai_request: generate request sent
+  ai_response: generate response received
+  retrieval: related to N...
+  [PASS] debug view has decision flow + token usage
+  [PASS] token/cost tracked — {'calls': 16, 'input_tokens': 188, 'output_tokens': 103, 'total_tokens': 291, 'total_cost': 0.0}
+  [PASS] diagnostic package exported
+  diagnostics at: C:\Users\VVTRUC\AppData\Local\Temp\demo_test_lecd7clt\diagnostics
+  history: ['H0001 AI-proposed changes', 'H0002 AI-proposed changes', 'H0003 AI-proposed changes', 'H0004 Promote working-memory facts to long-term memory']
+
+======================================================================
+UC13 — Original DemoProject data integrity (must be untouched)
+======================================================================
+  [PASS] original still has 5 nodes — titles=['Luffy', 'Zoro', 'Nami', 'Sanji', 'Shanks']
+  [PASS] original still has 5 relationships
+  [PASS] original data byte-for-byte unchanged
+
+======================================================================
+SUMMARY
+======================================================================
+  PASS  answer is grounded in internal data
+  PASS  sources are cited
+  PASS  read at least one node/relationship tool
+  PASS  flagged as no-evidence-found
+  PASS  returned the No-Evidence message
+  PASS  brainstorm produced no write proposal yet
+  PASS  conversation state grew (multi-turn memory)
+  PASS  no data written without approval (draft-before-commit)
+  PASS  proposal has no blocking consistency errors
+  PASS  draft-before-commit: change approved then committed
+  PASS  a new character node was created after commit
+  PASS  relationship committed
+  PASS  relationship count increased
+  PASS  Zoro description changed after commit
+  PASS  duplicate title detected before commit
+  PASS  duplicate not committed (rejected/discarded)
+  PASS  undo reported success
+  PASS  Zoro description restored by undo
+  PASS  internet mode is OFF by default (internal-only)
+  PASS  internet mode enabled on request
+  PASS  internet mode toggled back off
+  PASS  promotion produced a proposal
+  PASS  promoted fact written after approval
+  PASS  debug view has decision flow + token usage
+  PASS  token/cost tracked
+  PASS  diagnostic package exported
+  PASS  original still has 5 nodes
+  PASS  original still has 5 relationships
+  PASS  original data byte-for-byte unchanged
+
+  TOTAL: 29 passed, 0 failed, 0 skipped
