@@ -4,6 +4,11 @@ A minimal, text-based **Knowledge Graph** storage foundation for the AI tool.
 Only two kinds of data exist — **Node** and **Relationship** — every field is
 plain text, no domain schema is enforced. Phase 0 uses **JSON file storage**.
 
+> **Phase 1 is implemented.** The product is now a chat-centric **AI Writing
+> Partner** (grounded answers, draft-before-commit proposals, review/approve/
+> undo, Internet Mode, full observability). Start it with `py -3 chat.py` and see
+> [PHASE1_GUIDE.md](PHASE1_GUIDE.md). The graph below is its long-term memory.
+
 ## Structure
 
 ```

@@ -1,4 +1,8 @@
-"""Agent Runtime + Knowledge Retrieval + controlled Gemini integration (RQ-04/05/06)."""
+"""Agent Runtime + Knowledge Retrieval + controlled Gemini integration.
+
+Phase 0 (RQ-04/05/06): provider, tools, agent loop, token control, context.
+Phase 1: proposal-mode partner tools, cost tracking, observed provider.
+"""
 
 from __future__ import annotations
 
@@ -9,7 +13,10 @@ from .context_assembly import (
     build_relationship_context,
     merge_context,
 )
+from .cost import CostRates, CostTracker, optimize_prompt
 from .knowledge_tools import build_knowledge_tools
+from .observed_provider import ObservedProvider
+from .partner_tools import ToolContext, build_partner_tools
 from .provider import (
     AIProviderError,
     AuthError,
@@ -55,6 +62,12 @@ __all__ = [
     "ToolValidationError",
     "ToolExecutionError",
     "build_knowledge_tools",
+    "build_partner_tools",
+    "ToolContext",
+    "ObservedProvider",
+    "CostTracker",
+    "CostRates",
+    "optimize_prompt",
     "AgentRuntime",
     "AgentResult",
     "ToolCallLog",
